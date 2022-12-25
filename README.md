@@ -26,7 +26,7 @@ Then activate it:
 
 Then:
 
-    $ pip -r requirements.txt 
+    $ py -m pip install -r requirements.txt 
     $ python manage.py makemigrations
     $ python manage.py migrate
     $ python manage.py shell -c "import setup_db"
