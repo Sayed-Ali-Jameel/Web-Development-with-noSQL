@@ -1,0 +1,104 @@
+
+  body {
+            font-family: system-ui;
+            background-color: #effafa;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1{
+            color: #086a79;
+            font-weight: 700;
+        }
+
+        h5{
+            color: #17a2b8;
+            font-weight: 600;
+        }
+
+        .form-control:disabled{
+            background-color: #b4d1d1;
+            color: #086a79;
+            font-size: 1.1em;
+        }
+        hr{
+            border: #086a79 solid ;
+            width: 100%;
+            border-radius: 7px 7px 7px 7px;
+        }
+
+        .btn {
+            padding: .45rem 1.5rem .35rem;
+        }
+
+        .postedBy {
+            font-weight: 700;
+            color: #5ba4a4;
+            margin-right: .8rem;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: inline-block;
+            padding: .7rem 0;
+            color: black;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .date {
+            color: #7b8e8e;
+            font-weight: 700;
+            font-size: 0.85em;
+        }
+
+        .myList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .job {
+            border-left: 5px solid #5ba4a4;
+            width: 70vw;
+            background-color: #fff;
+            display: flex;
+            align-items: flex-start;
+            padding: 0.2rem 1.5rem;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            box-shadow: 0 4px 6px 4px rgb(91 164 164 / 20%);
+            flex-direction: column;
+            transition: 0.5s;
+        }
+
+        button:not(.navbar-toggler) {
+            background-color: #17a2b8 !important;
+            color: white !important;
+        }
+
+        button:hover:enabled {
+            background-color: #086a79 !important;
+        }
+
+        .job:hover {
+            opacity: 0.6;
+            transition: 0.5s;
+        }
+
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #c471f5;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(71, 129, 129), rgba(41, 78, 78));
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgb(71, 129, 129), rgb(41, 78, 78))
+        }

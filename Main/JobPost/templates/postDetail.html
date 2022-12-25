@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center mb-4">{{post.title}}</h1>
+            <hr>
+            <h5 class="text-center mb-4">Posted by {{post.posted_by}}</h5>
+            <h5 class="text-center mb-4"> At {{post.created_on}}</h5>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{form|crispy }}
+                </div>
+                <!-- update post -->
+                {% if edit == True %}
+                <button class="btn btn-primary btn-block" type="submit"> Submit</button>
+                {% endif %}
+            </form>
+            <!-- if the current user is the owner of the post-->
+            {% if post.posted_by == user %}
+            <!-- show all applicants -->
+            {% if applicants %}
+            <h5 class="text-center mb-4">Applicants:</h5>
+            <ul class="list-group list-group-flush">
+                {% for applicant in applicants %} 
+                <li class="list-group-item text-center mb-4">{{applicant}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- show delete button -->
+            <a href="{% url 'post-delete' post.id %}" style="margin: 2em;"><button class="btn btn-primary btn-block" >Delete</button></a>
+            <!-- show edit button if not pressed before -->
+            {% if edit == False %}
+            <a href="{% url 'post-edit' post.id %}"><button class="btn btn-primary btn-block" >edit</button></a>
+            {% endif %}
+            {% endif %}
+            <!-- if the current user is not the owner, the apply option is presented -->
+            {% if post.posted_by != user%}
+            {% if user in post.applicants.all %}
+            <a href="{% url 'apply' post.id %}"><button class="btn btn-primary btn-block" disabled>You Already Applied</button></a>
+            {% else %}
+            <a href="{% url 'apply' post.id %}"><button class="btn btn-primary btn-block" >Apply Now!</button></a>
+            {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

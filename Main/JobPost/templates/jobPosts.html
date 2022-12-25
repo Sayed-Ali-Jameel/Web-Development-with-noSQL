@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="display: flex; flex-direction: column;
+align-items: center;">
+    <h1 style="margin-top: 48px;"> Job Posts</h1>
+    <div class="input-group mb-3" style="width: 70vw; transition: 0.5s;">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <div class="input-group-append">
+            <a href="{% url 'post-add' %}"><button class="btn btn-primary btn-block"
+                    type="button">Add</button></a>
+        </div>
+    </div>
+    <hr>
+    <div class="myList">
+        <!-- list all posts -->
+        {% for post in posts %}
+        <a href="{% url 'post-detail' post.id %}">
+            <div class="job">
+                <span class="postedBy">{{post.posted_by}}</span>
+                <span class="title">{{ post.title }} </span>
+                <span class="date">{{post.created_on}}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    //script for search functionality
+    document.getElementById("posts").className = "nav-item active";
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".myList .job").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+</body>
+
+{% endblock %}

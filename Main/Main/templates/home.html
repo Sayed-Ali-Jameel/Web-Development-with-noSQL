@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<img src="{% static '/img/myBanner.png' %}" alt="">
+<div class="container mt-5">
+    <h1 class="mb-5 text-center">Latest Job Posts</h1>
+    <hr>
+
+    <div class="myList">
+        {% for post in latest %}
+        <a href="{% url 'post-detail' post.id %}">
+            <div class="job">
+                <span class="postedBy">{{post.posted_by}}</span>
+                <span class="title">{{ post.title }} </span>
+                <span class="date">{{post.created_on}}</span>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+
+    <h1 class="mb-5 text-center" style="margin-top: 35px;">Jobs Applied</h1>
+    <hr>
+    <div class="myList">
+        {% if hasApplied == False %}
+        <h5>You have not applied to any job yet.</h5>
+        {% else %}
+        {% for post in posts %}
+        {% if user in post.applicants.all %}
+        <a href="{% url 'post-detail' post.id %}">
+            <div class="job">
+                <span class="postedBy">{{post.posted_by}}</span>
+                <span class="title">{{ post.title }} </span>
+                <span class="date">{{post.created_on}}</span>
+            </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+</div>
+<script>
+    document.getElementById("home").className = "nav-item active";
+</script>
+{% endblock %}
