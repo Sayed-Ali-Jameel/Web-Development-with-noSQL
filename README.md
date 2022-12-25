@@ -31,3 +31,15 @@ Then:
     $ python manage.py migrate
     $ python manage.py shell -c "import setup_db"
     $ python manage.py runserver
+
+Sample users details:
+
+| name       | password   | 
+|------------|------------|
+| Ali        | 123        |
+| Hassan     | abc        | 
+| Mohammed   | Mohammed   | 
+| Nasser     | asdASD123  |
+| Restaurant | 123        |
+| DesignCo   | asdASD123  |
+| aCompany   | 321        |
