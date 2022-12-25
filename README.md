@@ -36,6 +36,7 @@ Sample users details:
 
 | name       | password   | 
 |------------|------------|
+| admin      | admin      |
 | Ali        | 123        |
 | Hassan     | abc        | 
 | Mohammed   | Mohammed   | 
