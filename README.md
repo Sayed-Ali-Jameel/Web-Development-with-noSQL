@@ -29,7 +29,7 @@ Then:
     $ py -m pip install -r requirements.txt 
     $ python manage.py makemigrations
     $ python manage.py migrate
-    $ python manage.py shell -c "import setup_db"
+    $ python manage.py shell -c "import setup_db" -- If you face some errors while doing this step, please ensure that the indexes 		created for the posted by and applicants in the database are not unique. If they are delete them. This can be done from the 	MongoDBCompass easily.
     $ python manage.py runserver
 
 Sample users details:

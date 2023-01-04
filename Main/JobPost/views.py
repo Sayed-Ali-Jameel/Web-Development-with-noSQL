@@ -75,6 +75,7 @@ def post_edit(request, id: int):
         form = PostForm(instance=obj)
         ret  = render(request, 'postDetail.html', {'post': obj,'form':form,'edit': True})
     else:
+        obj = Post.objects.get(id=id)
         form = PostForm(request.POST,instance=obj)
         if form.is_valid():
             form.save()
@@ -82,7 +83,7 @@ def post_edit(request, id: int):
             form.fields['description'].disabled = True
             form.fields['responsibility'].disabled = True
             form.fields['qualifications'].disabled = True
-            ret  = render(request, 'postDetail.html', {'post': obj,'form':form,'edit': False})
+            return redirect('..')
     return ret
 
 #for deleting a job post
